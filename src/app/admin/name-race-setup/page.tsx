@@ -10,12 +10,12 @@ type Session = {
 }
 
 type Slot = {
-  isFastest: any
+  isFastest: boolean
   time_taken_seconds: string
-  completed_at: any
+  completed_at: string
   code: string
   assigned_letters: string[]
-   time_taken_ms?: number
+  time_taken_ms?: number
 }
 
 export default function NameRaceSetupPage() {

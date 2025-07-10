@@ -185,8 +185,8 @@ useEffect(() => {
 
       {!role && (
         <div className="role-buttons">
-          <button onClick={() => setRole('player')}>I'm a Player</button>
-          <button onClick={() => setRole('viewer')}>I'm a Viewer</button>
+          <button onClick={() => setRole('player')}>I&apos;m a Player</button>
+          <button onClick={() => setRole('viewer')}>I&apos;m a Viewer</button>
         </div>
       )}
 
@@ -220,7 +220,7 @@ useEffect(() => {
 
     {!timeUp && !hasFinished && (
       <button className="finish-button" onClick={handleFinish}>
-        ✅ I'm Done
+        ✅ I&apos;m Done
       </button>
     )}
   </>
