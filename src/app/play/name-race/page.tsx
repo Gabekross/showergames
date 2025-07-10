@@ -122,6 +122,7 @@ useEffect(() => {
   let channel: any
 
   const subscribeToActiveSlot = async () => {
+    
     const { data: session } = await supabase
       .from('sessions')
       .select('id')
