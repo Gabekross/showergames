@@ -1,0 +1,442 @@
+// @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+// .name-race-container {
+//   min-height: 100vh;
+//   padding: 2rem;
+//   background: linear-gradient(135deg, #e0f2fe, #fce7f3);
+//   font-family: 'Nunito', sans-serif;
+//   overflow: hidden;
+//   text-align: center;
+
+//   .title {
+//     font-size: 2rem;
+//     font-weight: 700;
+//     margin-bottom: 1.5rem;
+//     color: #1f2937;
+//   }
+
+//   .role-buttons {
+//     display: flex;
+//     gap: 1rem;
+//     justify-content: center;
+//     margin-bottom: 2rem;
+
+//     button {
+//       background-color: #4ade80;
+//       color: white;
+//       font-weight: bold;
+//       font-size: 1rem;
+//       padding: 0.75rem 1.5rem;
+//       border: none;
+//       border-radius: 0.5rem;
+//       cursor: pointer;
+
+//       &:hover {
+//         background-color: #22c55e;
+//       }
+//     }
+//   }
+
+//   .code-input {
+//     font-size: 1.25rem;
+//     padding: 0.5rem 1rem;
+//     border-radius: 0.5rem;
+//     border: 2px solid #ddd;
+//     width: 120px;
+//     text-align: center;
+//     margin-bottom: 1.5rem;
+//   }
+
+//   .letter-grid {
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 1rem;
+//     justify-content: center;
+//     margin-top: 1.5rem;
+//   }
+
+//   .letter-block {
+//     background: linear-gradient(135deg, #facc15, #4ade80);
+//     color: white;
+//     font-size: 2rem;
+//     font-weight: bold;
+//     width: 3.5rem;
+//     height: 3.5rem;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border-radius: 0.75rem;
+//     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//     transition: opacity 0.7s;
+//   }
+
+//   .fade-out {
+//     opacity: 0.2;
+//   }
+// }
+
+// ends here.......................................
+.name-race-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6f6e6, #fffde7);
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    color: #4caf50;
+  }
+
+  .role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background: #ffc107;
+      border: none;
+      border-radius: 1rem;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background: #ffb300;
+      }
+    }
+  }
+
+  .code-input {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 2px solid #ddd;
+    width: 150px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      background: #43a047;
+    }
+  }
+
+  .letter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    max-width: 500px;
+    margin-inline: auto;
+  }
+
+  .letter-block {
+    background: #ffeb3b;
+    color: #333;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: opacity 1s ease;
+
+    &.fade-out {
+      opacity: 0;
+    }
+  }
+}
+
+//// ends here...............
+
+.name-race-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e6f6e6, #fffde7);
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding: 2rem;
+
+  // Faint background text
+  &::before {
+    content: "Oh Baby!";
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-size: 8rem;
+    color: rgba(200, 200, 200, 0.08);
+    transform: rotate(-20deg);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    color: #4caf50;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    button {
+      background: #ffc107;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+
+      &:hover {
+        background: #ffb300;
+      }
+    }
+  }
+
+  .code-input {
+    font-size: 2rem;
+    padding: 0.75rem;
+    width: 160px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+    margin-top: 0.5rem;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      background: #43a047;
+    }
+  }
+
+  .letter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+    justify-content: center;
+    max-width: 600px;
+    margin: 2rem auto 0;
+  }
+
+  .letter-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 60px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    background: #4fc3f7; // default color
+
+    &.fade-out {
+      opacity: 0;
+    }
+  }
+
+  .letter-block {
+  font-size: 2.5rem;
+  background: linear-gradient(145deg, #ffec99, #d0f4de);
+  color: #333;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: opacity 1.5s ease, transform 0.5s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+
+  // Toy block color rotation
+  $block-colors: (
+    linear-gradient(to bottom right, #f48fb1, #ec407a),   // pink
+    linear-gradient(to bottom right, #81d4fa, #0288d1),   // blue
+    linear-gradient(to bottom right, #a5d6a7, #43a047),   // green
+    linear-gradient(to bottom right, #fff176, #fdd835),   // yellow
+    linear-gradient(to bottom right, #ce93d8, #ab47bc)    // purple
+  );
+
+  @for $i from 1 through 26 {
+    .letter-block:nth-child(#{$i}) {
+      background: nth($block-colors, (($i - 1) % length($block-colors)) + 1);
+    }
+  }
+}
+
+//...............
+.name-race-container {
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe2f5, #d2f5e3);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #333;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  button {
+    background: #ffffff;
+    border: 2px solid #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background: #f4f4f4;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.code-input {
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  width: 200px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.letter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.letter-block {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border: 2px solid #aaa;
+  border-radius: 12px;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  box-shadow: 3px 3px 0 #00000020;
+  transition: opacity 1s ease;
+
+  &.fade-out {
+    opacity: 0.2;
+  }
+}
+
+.finish-button {
+  margin-top: 2rem;
+  background: linear-gradient(90deg, #98e47c, #f5dd73);
+  color: #000;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 600px) {
+  .letter-block {
+    width: 48px;
+    height: 48px;
+    font-size: 1.6rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .finish-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+.finish-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background-color: #388e3c;
+  }
+}
