@@ -76,6 +76,7 @@
 // }
 
 // ends here.......................................
+ @use "sass:list";
 .name-race-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #e6f6e6, #fffde7);
@@ -300,7 +301,7 @@
 
   @for $i from 1 through 26 {
     .letter-block:nth-child(#{$i}) {
-      background: nth($block-colors, (($i - 1) % length($block-colors)) + 1);
+      background: list.nth($block-colors, (($i - 1) % list.length($block-colors)) + 1);
     }
   }
 }

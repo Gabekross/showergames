@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import '@/styles/nameRace.scss'
 
-type Slot = {
-  code: string
-  assigned_letters: string[]
-}
+// type Slot = {
+//   code: string
+//   assigned_letters: string[]
+// }
 
 export default function NameRacePage() {
   const [role, setRole] = useState<'player' | 'viewer' | null>(null)
@@ -229,7 +229,7 @@ useEffect(() => {
 
       {role === 'viewer' && validCode && (
         <>
-          <p style={{ fontStyle: 'italic', opacity: 0.8 }}>You're watching the active player 👀</p>
+          <p style={{ fontStyle: 'italic', opacity: 0.8 }}>You&apos;re watching the player</p>
           <div className="letter-grid">
             {letters.map((l, i) => (
               <div key={i} className="letter-block">{l}</div>
