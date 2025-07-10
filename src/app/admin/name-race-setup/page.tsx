@@ -10,12 +10,12 @@ type Session = {
 }
 
 type Slot = {
-  time_taken_ms: number
   isFastest: any
   time_taken_seconds: string
   completed_at: any
   code: string
   assigned_letters: string[]
+   time_taken_ms?: number
 }
 
 export default function NameRaceSetupPage() {
@@ -131,8 +131,6 @@ const fetchResults = async () => {
 
   setSlots(updated)
 }
-
-
 
   return (
     <div className="name-race-admin">
