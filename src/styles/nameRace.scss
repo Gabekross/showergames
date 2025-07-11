@@ -3,8 +3,11 @@
 .name-race-container {
   min-height: 100vh;
   padding: 2rem;
+  flex-direction: column;
   font-family: 'Poppins', sans-serif;
   text-align: center;
+  align-items: center;      // horizontal centering
+  justify-content: center;  // vertical centering
   position: relative;
   background: linear-gradient(135deg, #e6f6e6, #fffde7);
   overflow-x: hidden;
@@ -14,7 +17,7 @@
     position: absolute;
     top: 20%;
     left: 10%;
-    font-size: 8rem;
+    font-size: 5rem;
     color: rgba(200, 200, 200, 0.08);
     transform: rotate(-20deg);
     pointer-events: none;
