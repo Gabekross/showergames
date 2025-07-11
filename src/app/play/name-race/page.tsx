@@ -3,11 +3,17 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import '@/styles/nameRace.scss'
+import { RealtimeChannel } from '@supabase/supabase-js'
 
-// type Slot = {
-//   code: string
-//   assigned_letters: string[]
-// }
+type Slot = {
+  code: string
+  assigned_letters: string[]
+  completed_at?: string
+  time_taken_seconds?: number
+  time_taken_ms?: number
+  is_active?: boolean
+}
+
 
 export default function NameRacePage() {
   const [role, setRole] = useState<'player' | 'viewer' | null>(null)
@@ -119,10 +125,10 @@ await supabase
 useEffect(() => {
   if (role !== 'viewer') return
 
-  let channel: any
+  let channel: RealtimeChannel
 
   const subscribeToActiveSlot = async () => {
-    
+
     const { data: session } = await supabase
       .from('sessions')
       .select('id')
@@ -164,7 +170,7 @@ useEffect(() => {
         },
         async (payload) => {
           // Only respond to the one marked is_active
-          const newData = payload.new as any
+          const newData = payload.new as Slot
           if (newData.is_active) {
             setLetters(newData.assigned_letters)
           }
