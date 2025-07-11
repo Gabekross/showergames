@@ -81,8 +81,10 @@
   }
 
   .letter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
     max-width: 600px;
