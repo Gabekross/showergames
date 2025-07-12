@@ -86,7 +86,7 @@ export default function NameRacePage() {
   // ✅ Continue as normal
   setValidCode(true)
   setLetters(slot.assigned_letters)
-  setTimer(60)
+  setTimer(15)
 }
  else {
       alert('Invalid code. Please check and try again.')

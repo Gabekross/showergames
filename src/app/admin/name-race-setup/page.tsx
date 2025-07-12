@@ -25,7 +25,7 @@ export default function NameRaceSetupPage() {
   const [slots, setSlots] = useState<Slot[]>([])
   const [loading, setLoading] = useState(false)
   const [hasTimer, setHasTimer] = useState(true)
-  const [duration, setDuration] = useState(60)
+  const [duration, setDuration] = useState(15)
 
   useEffect(() => {
     const loadSessions = async () => {
