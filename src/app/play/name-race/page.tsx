@@ -219,13 +219,14 @@ export default function NameRacePage() {
       )}
 
       {/* Countdown */}
-      {countdown !== null && (
-        <div className="countdown-overlay">
-          <div className="countdown-number">
-            {countdown === 0 ? 'Start!' : countdown}
-          </div>
-        </div>
-      )}
+   {countdown !== null && (
+  <div className="countdown-overlay">
+    <div className={`countdown-number countdown-${countdown}`}>
+      {countdown === 0 ? 'Start!' : countdown}
+    </div>
+  </div>
+)}
+
 
       {role === 'player' && validCode && countdown === null && (
         <>

@@ -174,8 +174,8 @@
   height: 100%;
   background: linear-gradient(
   135deg,
-  rgba(230, 246, 230, 0.7),
-  rgba(255, 253, 231, 0.7)
+  rgba(230, 246, 230, 0.9),
+  rgba(255, 253, 231, 0.9)
 );
 
   display: flex;
@@ -185,21 +185,22 @@
 
   .countdown-number {
     font-size: 8rem;
-    color: rgb(4, 89, 66);
+    font-weight: bold;
     animation: pop 0.5s ease-in-out;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   }
+
+  .countdown-5 { color: #e53935; }   // Red
+  .countdown-4 { color: #fb8c00; }   // Orange
+  .countdown-3 { color: #fdd835; }
+     // Yellow  // Green
+  .countdown-2 { color: #1e88e5; }   // Blue
+  .countdown-1 { color: #43a047; }  // Purple (Start)
+  .countdown-0 { color: #8e24aa; } 
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
 }
