@@ -14,22 +14,38 @@ type Slot = {
   is_active?: boolean
 }
 
-
 export default function NameRacePage() {
   const [role, setRole] = useState<'player' | 'viewer' | null>(null)
   const [codeInput, setCodeInput] = useState('')
   const [letters, setLetters] = useState<string[]>([])
   const [validCode, setValidCode] = useState(false)
+  const [countdown, setCountdown] = useState<number | null>(null)
   const [timer, setTimer] = useState<number | null>(null)
   const [timeLeft, setTimeLeft] = useState<number | null>(null)
   const [timeUp, setTimeUp] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
 
-
-  // ⏱ Countdown Timer
+  // ⏳ Countdown before showing letters
   useEffect(() => {
-    if (role === 'player' && validCode && timer) {
+    if (countdown === null) return
+    if (countdown < 0) return
+
+    if (countdown === 0) {
+      setCountdown(null)
       setTimeLeft(timer)
+      return
+    }
+
+    const countdownInterval = setInterval(() => {
+      setCountdown((prev) => (prev !== null ? prev - 1 : null))
+    }, 1000)
+
+    return () => clearInterval(countdownInterval)
+  }, [countdown])
+
+  // ⏱ Main game timer
+  useEffect(() => {
+    if (role === 'player' && validCode && countdown === null && timer) {
       const interval = setInterval(() => {
         setTimeLeft((prev) => {
           if (!prev) return 0
@@ -42,9 +58,8 @@ export default function NameRacePage() {
       }, 1000)
       return () => clearInterval(interval)
     }
-  }, [role, validCode, timer])
+  }, [role, validCode, countdown, timer])
 
-  // 🎮 Handle player code entry
   const handleCodeSubmit = async () => {
     const { data: session } = await supabase
       .from('sessions')
@@ -63,71 +78,35 @@ export default function NameRacePage() {
       .eq('code', codeInput)
       .single()
 
-   if (slot) {
-  // 1. Deactivate all other slots for the session
-  await supabase
-    .from('name_race_slots')
-    .update({ is_active: false })
-    .eq('session_id', session.id)
+    if (slot) {
+      await supabase
+        .from('name_race_slots')
+        .update({ is_active: false })
+        .eq('session_id', session.id)
 
-  // 2. Activate current slot
-  const { error: updateError } = await supabase
-    .from('name_race_slots')
-    .update({ is_active: true })
-    .eq('session_id', session.id)
-    .eq('code', codeInput)
+      const { error: updateError } = await supabase
+        .from('name_race_slots')
+        .update({ is_active: true })
+        .eq('session_id', session.id)
+        .eq('code', codeInput)
 
-  if (updateError) {
-    console.error('❌ Failed to activate slot:', updateError.message)
-    alert('Could not activate your game slot.')
-    return
-  }
+      if (updateError) {
+        alert('Could not activate your game slot.')
+        return
+      }
 
-  // ✅ Continue as normal
-  setValidCode(true)
-  setLetters(slot.assigned_letters)
-  setTimer(15)
-}
- else {
+      setValidCode(true)
+      setLetters(slot.assigned_letters)
+      setTimer(15)
+      setCountdown(5)
+    } else {
       alert('Invalid code. Please check and try again.')
     }
   }
 
   const handleFinish = async () => {
-  if (!codeInput) return
-  setHasFinished(true)
-
-  const { data: session } = await supabase
-    .from('sessions')
-    .select('id')
-    .eq('is_active', true)
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single()
-
-  if (!session) return
-
-await supabase
-  .from('name_race_slots')
-  .update({
-    completed_at: new Date().toISOString(),
-    time_taken_seconds: timer! - timeLeft!,
-    time_taken_ms: (timer! - timeLeft!) * 1000 + (1000 - (Date.now() % 1000)), // Estimate
-  })
-  .eq('session_id', session.id)
-  .eq('code', codeInput)
-
-
-  setTimeUp(true)
-}
-
-  // 👀 Viewer auto-refresh
-useEffect(() => {
-  if (role !== 'viewer') return
-
-  let channel: RealtimeChannel
-
-  const subscribeToActiveSlot = async () => {
+    if (!codeInput) return
+    setHasFinished(true)
 
     const { data: session } = await supabase
       .from('sessions')
@@ -139,52 +118,79 @@ useEffect(() => {
 
     if (!session) return
 
-    const loadLetters = async () => {
-      const { data: activeSlot } = await supabase
-        .from('name_race_slots')
-        .select('assigned_letters')
-        .eq('session_id', session.id)
+    await supabase
+      .from('name_race_slots')
+      .update({
+        completed_at: new Date().toISOString(),
+        time_taken_seconds: timer! - timeLeft!,
+        time_taken_ms: (timer! - timeLeft!) * 1000 + (1000 - (Date.now() % 1000)),
+      })
+      .eq('session_id', session.id)
+      .eq('code', codeInput)
+
+    setTimeUp(true)
+  }
+
+  // Viewer mode auto-subscription
+  useEffect(() => {
+    if (role !== 'viewer') return
+    let channel: RealtimeChannel
+
+    const subscribeToActiveSlot = async () => {
+      const { data: session } = await supabase
+        .from('sessions')
+        .select('id')
         .eq('is_active', true)
+        .order('created_at', { ascending: false })
+        .limit(1)
         .single()
 
-      if (activeSlot) {
-        setLetters(activeSlot.assigned_letters)
-        setValidCode(true)
-      } else {
-        setLetters([])
-        setValidCode(false)
+      if (!session) return
+
+      const loadLetters = async () => {
+        const { data: activeSlot } = await supabase
+          .from('name_race_slots')
+          .select('assigned_letters')
+          .eq('session_id', session.id)
+          .eq('is_active', true)
+          .single()
+
+        if (activeSlot) {
+          setLetters(activeSlot.assigned_letters)
+          setValidCode(true)
+        } else {
+          setLetters([])
+          setValidCode(false)
+        }
       }
+
+      await loadLetters()
+
+      channel = supabase
+        .channel(`active-slot-${session.id}`)
+        .on(
+          'postgres_changes',
+          {
+            event: 'UPDATE',
+            schema: 'public',
+            table: 'name_race_slots',
+            filter: `session_id=eq.${session.id}`,
+          },
+          async (payload) => {
+            const newData = payload.new as Slot
+            if (newData.is_active) {
+              setLetters(newData.assigned_letters)
+            }
+          }
+        )
+        .subscribe()
     }
 
-    await loadLetters() // load immediately
-
-    channel = supabase
-      .channel(`active-slot-${session.id}`)
-      .on(
-        'postgres_changes',
-        {
-          event: 'UPDATE',
-          schema: 'public',
-          table: 'name_race_slots',
-          filter: `session_id=eq.${session.id}`,
-        },
-        async (payload) => {
-          // Only respond to the one marked is_active
-          const newData = payload.new as Slot
-          if (newData.is_active) {
-            setLetters(newData.assigned_letters)
-          }
-        }
-      )
-      .subscribe()
-  }
-
-  subscribeToActiveSlot()
-
-  return () => {
-    if (channel) supabase.removeChannel(channel)
-  }
-}, [role])
+    subscribeToActiveSlot()
+    return () => {
+      if (channel) supabase.removeChannel(channel)
+    }
+  }, [role])
 
   return (
     <div className="name-race-container">
@@ -212,27 +218,35 @@ useEffect(() => {
         </div>
       )}
 
-    {role === 'player' && validCode && (
-  <>
-    <p>
-      <strong>Time Left:</strong>{' '}
-      {timeUp ? "⏰ Time's Up!" : `${timeLeft}s`}
-    </p>
+      {/* Countdown */}
+      {countdown !== null && (
+        <div className="countdown-overlay">
+          <div className="countdown-number">
+            {countdown === 0 ? 'Start!' : countdown}
+          </div>
+        </div>
+      )}
 
-    <div className="letter-grid">
-      {letters.map((l, i) => (
-        <div key={i} className={`letter-block ${timeUp ? 'fade-out' : ''}`}>{l}</div>
-      ))}
-    </div>
+      {role === 'player' && validCode && countdown === null && (
+        <>
+          <p>
+            <strong>Time Left:</strong>{' '}
+            {timeUp ? "⏰ Time's Up!" : `${timeLeft}s`}
+          </p>
 
-    {!timeUp && !hasFinished && (
-      <button className="finish-button" onClick={handleFinish}>
-        ✅ I&apos;m Done
-      </button>
-    )}
-  </>
-)}
+          <div className="letter-grid">
+            {letters.map((l, i) => (
+              <div key={i} className={`letter-block ${timeUp ? 'fade-out' : ''}`}>{l}</div>
+            ))}
+          </div>
 
+          {!timeUp && !hasFinished && (
+            <button className="finish-button" onClick={handleFinish}>
+              ✅ I&apos;m Done
+            </button>
+          )}
+        </>
+      )}
 
       {role === 'viewer' && validCode && (
         <>
