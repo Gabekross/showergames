@@ -188,7 +188,7 @@ useEffect(() => {
 
   return (
     <div className="name-race-container">
-      <h1 className="title">Name Race Game</h1>
+      <h1 className="title">Name Race</h1>
 
       {!role && (
         <div className="role-buttons">
