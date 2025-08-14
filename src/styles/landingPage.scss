@@ -1,0 +1,48 @@
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(145deg, #fffef9, #f7faff);
+  min-height: 100vh;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    background: #f0f8ff;
+  }
+}
+
+.footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #888;
+}
