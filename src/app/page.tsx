@@ -6,7 +6,7 @@ import '@/styles/landingPage.scss'
 export default function LandingPage() {
   return (
     <div className="landing-container">
-      <h1 className="main-title">🎉 Baby Shower Games</h1>
+      <h1 className="main-title"> MC Haywai Games</h1>
 
       <div className="link-grid">
         <Link href="/play/name-race">
@@ -34,7 +34,7 @@ export default function LandingPage() {
       </div>
 
       <footer className="footer">
-        Built with 💖 by Olu Gabriel
+        Built with 💖 Gabekross
       </footer>
     </div>
   )

@@ -1,0 +1,44 @@
+/* Instagram-branded variant */
+.socialbar__inner.instagram {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.socialbar__link.instagram {
+  --ig1: #f58529;
+  --ig2: #dd2a7b;
+  --ig3: #8134af;
+  --ig4: #515bd4;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(45deg, var(--ig1), var(--ig2), var(--ig3), var(--ig4));
+  border: 0;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+.socialbar__link.instagram:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+}
+
+.socialbar__link.instagram:active { transform: translateY(1px); }
+
+.socialbar__icon { width: 18px; height: 18px; fill: currentColor; color: #fff; }
+.socialbar__text { font-weight: 700; color: #fff; letter-spacing: 0.2px; }
+
+/* Keep the "Follow us" label subtle so the IG pill pops */
+.socialbar__label { margin-right: 8px; font-weight: 700; color: #256D2A; }
+
+/* Positioning you already had */
+.socialbar--fab { position: fixed; right: 16px; bottom: 16px; z-index: 9999; }
+.socialbar--footer { position: sticky; bottom: 0; display: flex; justify-content: center; padding: 10px 0 16px; }
+@media print { .socialbar { display: none; } }
