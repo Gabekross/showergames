@@ -13,34 +13,34 @@ type Category = { id: string; title: string; theme_color: string | null }
 
 const CATEGORY_TITLE = 'Graduation Wishes'
 
-function GraduationSilhouette() {
-  return (
-    <svg
-      className="grad-silhouette-svg"
-      viewBox="0 0 400 400"
-      aria-hidden="true"
-      focusable="false"
-    >
-      {/* Mortarboard (pronounced cap) */}
-      <polygon points="200,40 60,90 200,140 340,90" />
-      {/* Cap band */}
-      <rect x="150" y="135" width="100" height="22" rx="6" />
-      {/* Tassel */}
-      <line x1="290" y1="95" x2="290" y2="165" strokeWidth="10" strokeLinecap="round" />
-      <circle cx="290" cy="170" r="8" />
-      {/* Head */}
-      <circle cx="200" cy="200" r="48" />
-      {/* Shoulders / torso (simple stylized) */}
-      <path d="
-        M100 320
-        C120 260, 280 260, 300 320
-        L300 360
-        L100 360
-        Z
-      " />
-    </svg>
-  );
-}
+// function GraduationSilhouette() {
+//   return (
+//     <svg
+//       className="grad-silhouette-svg"
+//       viewBox="0 0 400 400"
+//       aria-hidden="true"
+//       focusable="false"
+//     >
+//       {/* Mortarboard (pronounced cap) */}
+//       <polygon points="200,40 60,90 200,140 340,90" />
+//       {/* Cap band */}
+//       <rect x="150" y="135" width="100" height="22" rx="6" />
+//       {/* Tassel */}
+//       <line x1="290" y1="95" x2="290" y2="165" strokeWidth="10" strokeLinecap="round" />
+//       <circle cx="290" cy="170" r="8" />
+//       {/* Head */}
+//       <circle cx="200" cy="200" r="48" />
+//       {/* Shoulders / torso (simple stylized) */}
+//       <path d="
+//         M100 320
+//         C120 260, 280 260, 300 320
+//         L300 360
+//         L100 360
+//         Z
+//       " />
+//     </svg>
+//   );
+// }
 
 
 export default function GraduationWishesPage() {
