@@ -166,29 +166,30 @@ export default function GraduationWishesPage() {
 
   return (
     <div className="grad-wish-container" >
-      <div className="watermark">Congrats!</div>
+      {/* <div className="watermark">Congrats!</div> */}
 
       <header className="grad-header">
-        <h1 className="grad-title">Graduation Wishes</h1>
-        <p className="grad-subtitle">Advice &amp; Well Wishes for the Graduant</p>
+        <h1 className="grad-title">Birthday Wishes</h1>
+        <p className="grad-subtitle">Well Wishes for the Celebrant</p>
+        {/* <p className="grad-subtitle">Advice &amp; Well Wishes for the Graduant</p> */}
       </header>
       {/* Decorative silhouette */}
-        <div className="grad-silhouette">
+        {/* <div className="grad-silhouette">
         <GraduationSilhouette />
         </div>
 
-      {loading && <p className="loading">Loading…</p>}
+      {loading && <p className="loading">Loading…</p>} */}
 
       {!loading && category && (
         <>
-          <section className="wish-list">
+          {/* <section className="wish-list">
             {items.map((q) => (
               <div key={q.id} className="wish-card">
                 <span className="prompt">{q.text}</span>
                 <span className="line"></span>
               </div>
             ))}
-          </section>
+          </section> */}
 
           <section className="response-panel">
             <h2 className="panel-title">Leave Your Wishes</h2>
@@ -199,17 +200,18 @@ export default function GraduationWishesPage() {
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Dr. Oluwaseyi"
+                placeholder="Segun"
               />
             </label>
 
             <label className="field">
-              <span>Advice &amp; Well Wishes</span>
+              <span>Well Wishes</span>
+               {/* <span>Advice &amp; Well Wishes</span> */}
               <textarea
                 value={advice}
                 onChange={(e) => setAdvice(e.target.value)}
                 rows={4}
-                placeholder="Share your words of wisdom and encouragement…"
+                placeholder="Share your words of wisdom, wishes and encouragement…"
               />
             </label>
 
