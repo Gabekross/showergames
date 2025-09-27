@@ -42,7 +42,7 @@ export default function SocialBar({ handles, position = 'floating' }: Props) {
   return (
     <div className={position === 'footer' ? 'socialbar socialbar--footer' : 'socialbar socialbar--fab'} aria-label="Social links">
       <div className="socialbar__inner instagram">
-        <span className="socialbar__label" aria-hidden="true">Follow us</span>
+        <span className="socialbar__label" aria-hidden="true">Follow</span>
         <ul className="socialbar__list">
           {list.map(s => (
             <li key={s}>
