@@ -22,12 +22,13 @@ export default function LandingPage() {
           <Link href="/play/guess-who">
           <div className="card">🎓 Guess Who</div>
         </Link>
+        <Link href="/play/guess-who/wall">
+          <div className="card">🎓 Guess Who - Wall </div>
+        </Link>
         <Link href="/admin/graduation-wishes">
           <div className="card">🛠️ Admin – Graduation Wishes</div>
         </Link>
         
-
-
         <Link href="/admin/name-race-setup">
           <div className="card">🛠️ Admin Panel</div>
         </Link>
