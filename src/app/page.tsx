@@ -19,9 +19,13 @@ export default function LandingPage() {
         <Link href="/play/graduation-wishes">
           <div className="card">🎓 Graduation Wish Wall</div>
         </Link>
+          <Link href="/play/guess-who">
+          <div className="card">🎓 Guess Who</div>
+        </Link>
         <Link href="/admin/graduation-wishes">
           <div className="card">🛠️ Admin – Graduation Wishes</div>
         </Link>
+        
 
 
         <Link href="/admin/name-race-setup">
@@ -30,6 +34,10 @@ export default function LandingPage() {
 
         <Link href="/play/puzzle">
           <div className="card">🧩 Puzzle Game</div>
+        </Link>
+
+         <Link href="/play/qna">
+          <div className="card">Questions</div>
         </Link>
       </div>
 
