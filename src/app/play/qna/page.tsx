@@ -34,7 +34,7 @@ export default function QnAPage() {
     <div className="min-h-screen flex items-center justify-center bg-[#fffce8] px-4 py-12">
       <div className="w-full max-w-xl bg-white border border-green-200 rounded-lg shadow-xl p-6">
         <h2 className="text-xl font-bold text-green-800 mb-4 leading-snug text-center">
-          Write one <span className="italic">"scandalous"</span> or fun fact about the celebrant —
+          Write one <span className="italic">scandalous</span> or fun fact about the celebrant —
           <br />
           <span className="text-sm text-green-700 font-medium">
             (Make it playful, mysterious, or silly... just for laughs!)

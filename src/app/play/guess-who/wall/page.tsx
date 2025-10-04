@@ -19,11 +19,11 @@ type Memory = {
 export default function GuessWhoWallPage() {
   const [memories, setMemories] = useState<Memory[]>([]);
   const [showFrom, setShowFrom] = useState(true);
-  const [debug, setDebug] = useState<string>('Not started');
+  
 
   useEffect(() => {
     const loadMemories = async () => {
-      setDebug('Fetching from Supabase...');
+      
 
       const { data, error } = await supabase
         .from('guess_who_responses')
@@ -32,12 +32,12 @@ export default function GuessWhoWallPage() {
 
       if (error) {
         console.error('Supabase error:', error);
-        setDebug(`❌ Supabase error: ${error.message}`);
+        
         return;
       }
 
       console.log('✅ Supabase data received:', data);
-      setDebug(`✅ Data fetched. Rows: ${data?.length}`);
+     
       setMemories(data || []);
     };
 

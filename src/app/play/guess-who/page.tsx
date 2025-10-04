@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import '@/styles/guessWho.scss' // Create this file for bright custom theme
 
@@ -37,9 +37,9 @@ export default function GuessWhoPage() {
   return (
     <div className="guess-who-container">
       <header className="guess-header">
-        <h1 className="guess-title">🎭 Guess Who!</h1>
+        <h1 className="guess-title">Guess Who!</h1>
         <p className="guess-subtitle">
-          Write one funny memory you have with the celebrant — make it hilarious, heartfelt, or mysterious 😄
+          Write one funny memory you have with the celebrant — make it hilarious, heartfelt, or anyhow 😄
         </p>
       </header>
 

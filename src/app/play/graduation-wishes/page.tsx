@@ -189,7 +189,7 @@ export default function GraduationWishesPage() {
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="Segun"
+                placeholder="Name"
               />
             </label>
 
