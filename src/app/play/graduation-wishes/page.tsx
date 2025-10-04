@@ -1,8 +1,12 @@
 'use client'
 
+
+
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import '@/styles/graduationWishes.scss'
+
+export const dynamic = 'force-dynamic';
 
 // ❌ Not needed now; commenting out to avoid unused types.
 // type Question = {
